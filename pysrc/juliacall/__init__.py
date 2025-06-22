@@ -203,12 +203,12 @@ def init():
 
     # call jl_atexit_hook() when python exits to gracefully stop the julia runtime,
     # including running finalizers for any objects that still exist
-    @atexit.register
-    def at_jl_exit():
-        jl_atexit_hook = lib.jl_atexit_hook
-        jl_atexit_hook.argtypes = [c.c_int]
-        jl_atexit_hook.restype = None
-        jl_atexit_hook(0)
+    # @atexit.register
+    # def at_jl_exit():
+    #     jl_atexit_hook = lib.jl_atexit_hook
+    #     jl_atexit_hook.argtypes = [c.c_int]
+    #     jl_atexit_hook.restype = None
+    #     jl_atexit_hook(0)
 
     # initialise PythonCall
     jl_eval = lib.jl_eval_string
